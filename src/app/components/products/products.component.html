@@ -2,7 +2,7 @@
     <div class="d-md-flex">
         <div id="topnavbar">
             <div class="topnav mb-3">
-                <div class="d-flex px-1"> <a href="users">users</a> <a href="products" class="active">products</a> </div>
+                <div class="d-flex px-1"> <a href="customers">Customers</a> <a href="products" class="active">products</a> <a href="vendors">vendors</a> </div>
             </div>
             <div class="d-flex align-items-center mb-3 px-md-3 px-2"> <span class="text-uppercase fs13 fw-bolder pe-3">search<span class="ps-1">by</span></span>
                 <form class="example d-flex align-items-center"> <input type="text" placeholder="Type in Company Name Or Mid id" name="search"> <button type="submit"><i class="fa fa-search"></i></button> </form>
@@ -19,7 +19,7 @@
                     <tbody>
                         <tr *ngFor="let p of allProducts" >
                             <td><span class="bg-blight">{{p.pid}}</span></td>
-                            <td><span class="bg-bdark">{{p.pname}}</span></td>
+                            <td><span class="bg-bdark">{{p.name}}</span></td>
                             <td><span class="bg-blight">{{p.manufacturer}}</span></td>
                         </tr>
                         

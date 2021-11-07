@@ -12,21 +12,23 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserloginComponent } from './components/userlogin/userlogin.component';
-import { ProductComponent } from './components/product/product.component';
+import { ProductsComponent } from './components/products/products.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { UserComponent } from './components/user/user.component';
+import { CustomerComponent } from './components/customer/customer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UsersComponent } from './components/users/users.component';
+import { CustomersComponent } from './components/customers/customers.component';
+import { VendorsComponent } from './components/vendors/vendors.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserloginComponent,
-    ProductComponent,
+    ProductsComponent,
     SearchBarComponent,
-    UserComponent,
-    UsersComponent
+    CustomerComponent,
+    CustomersComponent,
+    VendorsComponent
   ],
   imports: [
     BrowserModule,

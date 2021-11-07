@@ -4,24 +4,23 @@ import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss']
 })
-export class ProductComponent implements OnInit {
-  allProducts: Product[];
+export class ProductsComponent implements OnInit {
+  allProducts: Product[]=[];
   testInp: string;
   showProducts = true;
   productService: ProductsService;
 
   constructor(productService: ProductsService) {
-    this.allProducts = productService.getAllProducts();
     this.testInp = "";
     this.productService = productService;
   }
 
   ngOnInit(): void {
     this.productService.getProducts()
-    .subscribe( data => this.allProducts = {...data})
+    .subscribe( data => this.allProducts = data)
   }
 
   onSomethingInput(e: Event) : void {

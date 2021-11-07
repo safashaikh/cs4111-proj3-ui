@@ -1,18 +1,23 @@
-export class User {
-  ID: Number;
-  nameLast: string;
-  nameFirst: string;
+export class Customer {
+  cid: Number;
   username: string;
+  password: string;
+  name: string;
   email: string;
-  addressID: Number;
+  phone: string;
 
-  constructor(ID: Number, nameLast: string, nameFirst: string, username: string, email: string, addressID: Number) {
-    this.ID         = ID       
-    this.nameLast   = nameLast 
-    this.nameFirst  = nameFirst
-    this.username   = username 
-    this.email      = email    
-    this.addressID  = addressID
+  constructor(cid: Number,
+    username: string,
+    password: string,
+    name: string,
+    email: string,
+    phone: string) {
+    this.cid      = cid     
+    this.username = username
+    this.password = password
+    this.name     = name    
+    this.email    = email   
+    this.phone    = phone   
   }
 }
 

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userlogin.component.scss']
 })
 export class UserloginComponent implements OnInit {
-
+  loginURL: string = "http://localhost:5000/userlogin/google";
   constructor() { }
 
   ngOnInit(): void {
