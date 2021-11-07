@@ -12,6 +12,7 @@ export class VendorsComponent implements OnInit {
   vendors: Vendor[] = [];
   vendorService: VendorsService;
   pID: string;
+  
   constructor(vendorService: VendorsService, public router: Router, private route: ActivatedRoute) {
     this.vendorService = vendorService;
     this.pID = '0';

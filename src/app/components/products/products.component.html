@@ -18,8 +18,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let p of allProducts" >
-                            <td><span class="bg-blight">{{p.pid}}</span></td>
-                            <td><span class="bg-bdark">{{p.name}}</span></td>
+                            <td><span class="bg-blight"><a routerLink="{{'/products/'+p.pid+'/vendors'}}" routerLinkActive="router-link-active">{{p.pid}}</a></span></td>
+                            <td><span class="bg-bdark"><a routerLink="{{'/products/'+p.pid+'/vendors'}}">{{p.name}}</a></span></td>
                             <td><span class="bg-blight">{{p.manufacturer}}</span></td>
                         </tr>
                         
