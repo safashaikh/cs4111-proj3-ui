@@ -11,5 +11,5 @@ export class AppComponent {
 
 @Injectable()
 export class Globals {
-  hosturl: string = 'http://127.0.0.1:5000';
+  hosturl: string = 'http://127.0.0.1:8111';
 }

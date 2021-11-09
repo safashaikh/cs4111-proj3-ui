@@ -18,6 +18,7 @@ import { CustomersComponent } from './components/customers/customers.component';
 import { VendorsComponent } from './components/vendors/vendors.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { MetricsComponent } from './components/metrics/metrics.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MetricsComponent } from './components/metrics/metrics.component';
     CustomersComponent,
     VendorsComponent,
     OrdersComponent,
-    MetricsComponent
+    MetricsComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
