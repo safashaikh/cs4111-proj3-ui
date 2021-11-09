@@ -2,11 +2,17 @@
     <div class="d-md-flex">
         <div id="topnavbar">
             <div *ngIf="this.pID != '0'"><h1>Showing Vendors for Product with pid = {{this.pID}}</h1></div>
-            <div class="topnav mb-3">
-                <div class="d-flex px-1"> <a href="users">customers</a> <a href="products">products</a> <a href="vendors" class="active">vendors</a> </div>
-            </div>
-            <div class="d-flex align-items-center mb-3 px-md-3 px-2"> <span class="text-uppercase fs13 fw-bolder pe-3">search<span class="ps-1">by</span></span>
-                <form class="example d-flex align-items-center"> <input type="text" placeholder="Type in Company Name Or Mid id" name="search"> <button type="submit"><i class="fa fa-search">Search</i></button> </form>
+            <div class="d-flex align-items-center mb-3 px-md-3 px-2"> 
+                <span class="text-uppercase fs13 fw-bolder pe-3">
+                    search
+                    <span class="ps-1">by</span>
+                </span>
+                <form class="example d-flex align-items-center"> 
+                    <input type="text" (change)="onSearchChange($event)" placeholder="Type in Name" name="search"> 
+                    <button (click)="onSearch()">
+                        <i class="fa fa-search">Search</i>
+                    </button> 
+                </form>
             </div>
             <div class="table-responsive px-2">
                 <table class="table table-borderless">
@@ -20,12 +26,11 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let v of vendors" >
-                            <td><span class="bg-blight">{{v.vid}}</span></td>
-                            <td><span class="bg-bdark">{{v.name}}</span></td>
+                            <td><span class="bg-blight"><a routerLink="{{'/vendors/'+v.vid+'/products'}}" routerLinkActive="router-link-active">{{v.vid}}</a></span></td>
+                            <td><span class="bg-bdark"><a routerLink="{{'/vendors/'+v.vid+'/products'}}" routerLinkActive="router-link-active">{{v.name}}</a></span></td>
                             <td><span class="bg-blight">{{v.email}}</span></td>
                             <td><span class="bg-bdark">{{v.phone}}</span></td>
                         </tr>
-                        
                     </tbody>
                 </table>
             </div>

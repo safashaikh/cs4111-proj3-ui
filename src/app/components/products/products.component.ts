@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
 import { ProductsService } from './products.service';
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-product',
@@ -9,27 +10,32 @@ import { ProductsService } from './products.service';
 })
 export class ProductsComponent implements OnInit {
   allProducts: Product[]=[];
-  testInp: string;
-  showProducts = true;
   productService: ProductsService;
+  vID: string;
+  search:string = ""
 
-  constructor(productService: ProductsService) {
-    this.testInp = "";
+  constructor(productService: ProductsService, public router: Router, private route: ActivatedRoute) {
     this.productService = productService;
+    this.vID = '0';
   }
 
   ngOnInit(): void {
-    this.productService.getProducts()
+    if (this.router.url == '/products'){
+      this.productService.getProducts()
+      .subscribe( data => this.allProducts = data)
+    } else {
+      this.vID = this.route.snapshot.params['vid']
+      this.productService.getVendorProducts(this.vID)
+      .subscribe( data => this.allProducts = data)
+    }
+  }
+
+  onSearch() : void {
+    this.productService.getProductsByName(this.search)
     .subscribe( data => this.allProducts = data)
   }
 
-  onSomethingInput(e: Event) : void {
-    console.log("Input = ", (<HTMLInputElement> e.target).value);
-    this.testInp = (<HTMLInputElement> e.target).value;
+  onSearchChange(event: any) : void {
+    this.search = event.target.value;
   }
-
-  toggleProducts(): void {
-    this.showProducts = !this.showProducts;
-  }
-
 }

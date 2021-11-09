@@ -1,7 +1,36 @@
 <nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid"> <a class="navbar-brand" href="#"> Electronics Hub </a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  <div class="container-fluid"> 
+    <a class="navbar-brand" [routerLink]="['/customers']" routerLinkActive="router-link-active" aria-current="page"> 
+      Electronics Hub 
+    </a> 
+    <button class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="#navbarNavAltMarkup" 
+      aria-controls="navbarNavAltMarkup" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon">
+        </span> 
+      </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ml-auto"> <a [routerLink]="['/customers']" routerLinkActive="router-link-active" aria-current="page" class="nav-link"> Customers </a> <a [routerLink]="['/products']" routerLinkActive="router-link-active"  aria-current="page" class="nav-link"> Products </a>  <a [routerLink]="['/vendors']" routerLinkActive="router-link-active" aria-current="page" class="nav-link"> Vendors </a> <a class="nav-link" [routerLink]="['/userlogin']" routerLinkActive="router-link-active" > <img src="https://i.imgur.com/C4egmYM.jpg" class="rounded-circle" width="30"> </a> </div>
+          <div class="navbar-nav ml-auto"> 
+            <a [routerLink]="['/customers']" routerLinkActive="router-link-active" aria-current="page" class="nav-link"> 
+              Customers 
+            </a> 
+            <a [routerLink]="['/products']" routerLinkActive="router-link-active"  aria-current="page" class="nav-link"> 
+              Products 
+            </a>  
+            <a [routerLink]="['/vendors']" routerLinkActive="router-link-active" aria-current="page" class="nav-link"> 
+              Vendors 
+            </a> 
+            <a [routerLink]="['/metrics']" routerLinkActive="router-link-active" aria-current="page" class="nav-link"> 
+              Metrics 
+            </a> 
+            <div class="nav-link"> 
+              <img class="nav-link" src="https://i.imgur.com/C4egmYM.jpg" class="rounded-circle" width="30"> 
+            </div> 
+          </div>
       </div>
   </div>
 </nav>

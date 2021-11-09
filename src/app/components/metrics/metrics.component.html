@@ -1,0 +1,78 @@
+<div class="px-0 bg-light">
+    <div class="d-md-flex">
+        <div id="topnavbar">
+            <div>
+                <header> Most Purchased Items </header>
+                <br>
+                <div class="table-responsive px-2">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">ProductID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of mostPurchasedProducts" >
+                                <td><span class="bg-blight"><a routerLink="{{'/products/'+p.pid+'/vendors'}}" routerLinkActive="router-link-active">{{p.pid}}</a></span></td>
+                                <td><span class="bg-bdark"><a routerLink="{{'/products/'+p.pid+'/vendors'}}">{{p.name}}</a></span></td>
+                                <td><span class="bg-blight">{{p.amount}}</span></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <br><br><br>
+                <header> Most Liked Products </header>
+                <br>
+                <div class="table-responsive px-2">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">ProductID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of mostLikedProducts" >
+                                <td><span class="bg-blight"><a routerLink="{{'/products/'+p.pid+'/vendors'}}" routerLinkActive="router-link-active">{{p.pid}}</a></span></td>
+                                <td><span class="bg-bdark"><a routerLink="{{'/products/'+p.pid+'/vendors'}}">{{p.name}}</a></span></td>
+                                <td><span class="bg-blight">{{p.amount}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br><br><br>
+                <header> Most Popular Vendors </header>
+                <br>
+                <div class="table-responsive px-2">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">VendorID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">NumPurchases</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of mostPopularVendors" >
+                                <td><span class="bg-blight"><a routerLink="{{'/vendors/'+p.vid+'/products'}}" routerLinkActive="router-link-active">{{p.vid}}</a></span></td>
+                                <td><span class="bg-bdark"><a routerLink="{{'/vendors/'+p.vid+'/products'}}">{{p.name}}</a></span></td>
+                                <td><span class="bg-blight">{{p.num_purchases}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between px-3 mt-3">
+                <div class="bg-bdark fs13"> <span>Page</span> <input class="input-10 text-center" type="text" value="1"> <span><span class="px-1">of</span>1</span> </div>
+                <div class="d-flex justify-content-end bg-bdark fs13"> <span class="pe-1">Show</span> <input class="input-10" type="number" value="25"> <span class="ps-2"><span class="pe-2">/</span>Page</span> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
