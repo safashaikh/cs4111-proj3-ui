@@ -13,7 +13,10 @@ let globals = new Globals();
 })
 export class ProductsService {
   allProducts: Product[] = [];
+  hosturl: string;
   constructor(private http: HttpClient, private router: Router) {
+    let globals = new Globals();
+    this.hosturl = globals.hosturl;
   }
 
   getProductServiceUrl(id: string): string {
@@ -65,5 +68,4 @@ export class ProductsService {
     console.log(this.http.get<Product[]>(theUrl));
     return this.http.get<Product[]>(theUrl);
   }
-
 }
