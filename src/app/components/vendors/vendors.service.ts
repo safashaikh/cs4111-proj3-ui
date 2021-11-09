@@ -4,6 +4,9 @@ import { ActivatedRoute } from "@angular/router";
 import { Vendor } from './vendor'
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
+import { Globals } from 'src/app/app.component';
+
+let globals = new Globals();
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +20,14 @@ export class VendorsService {
     if (this.router.url === '/vendors' || this.router.url === '/vendors/:vid'){
       let result: string;
       if (id!=''){
-        result = 'http://127.0.0.1:5000/vendors/'+id;
+        result = globals.hosturl+'/vendors/'+id;
       }else{
-        result = 'http://127.0.0.1:5000/vendors';
+        result = globals.hosturl+'/vendors';
       }
       return result;
     }
     else{
-      return 'http://127.0.0.1:5000/products/'+id+'/vendors';
+      return globals.hosturl+'/products/'+id+'/vendors';
     }
   }
 
@@ -54,7 +57,7 @@ export class VendorsService {
       return this.getVendors()
     }
     console.log(search)
-    let theUrl: string = "http://127.0.0.1:5000/vendors?name="+search;
+    let theUrl: string = globals.hosturl+"/vendors?name="+search;
     console.log(this.http.get<Vendor[]>(theUrl));
     return this.http.get<Vendor[]>(theUrl);
   }

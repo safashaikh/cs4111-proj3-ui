@@ -8,6 +8,12 @@ export class Order {
   address: Number;
   subtotal: string;
   total: string;
+  shipper: string;
+  tn: string;
+  street_address: string;
+  city: string;
+  state: string;
+  zip: string;
 
 
   constructor(oid: Number,
@@ -18,7 +24,13 @@ export class Order {
               card: Number,
               address: Number,
               subtotal: string,
-              total: string) {
+              total: string,
+              shipper: string,
+              tn: string,
+              street_address: string,
+              city: string,
+              state: string,
+              zip: string) {
     this.oid        = oid     
     this.odate      = odate   
     this.discount   = discount
@@ -28,5 +40,11 @@ export class Order {
     this.address    = address
     this.subtotal = subtotal
     this.total = total 
+    this.shipper = shipper
+    this.tn = tn
+    this.street_address = street_address
+    this.city = city
+    this.state = state
+    this.zip = zip
   }
 }

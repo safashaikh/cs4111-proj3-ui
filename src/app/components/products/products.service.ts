@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
 import { Globals } from 'src/app/app.component';
 
+let globals = new Globals();
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,13 +24,13 @@ export class ProductsService {
 
     if (this.router.url === '/products' || this.router.url === '/products/:pid') {
       if (id=='') {
-        result = this.hosturl+'/products'
+        result = globals.hosturl+'/products'
       } else{
-        result = this.hosturl+'/products/'+id;
+        result = globals.hosturl+'/products/'+id;
       }
       return result;
     } else {
-      return this.hosturl+'/vendors/'+id+'/products';
+      return globals.hosturl+'/vendors/'+id+'/products';
     }
   }
 
@@ -61,9 +64,8 @@ export class ProductsService {
       return this.getProducts()
     }
     console.log(search)
-    let theUrl: string = this.hosturl+"/products?name="+search;
+    let theUrl: string = globals.hosturl+"/products?name="+search;
     console.log(this.http.get<Product[]>(theUrl));
     return this.http.get<Product[]>(theUrl);
   }
-
 }

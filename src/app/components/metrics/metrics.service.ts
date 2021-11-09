@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { MostPopularProducts } from './mostPopularProducts';
 import { Observable } from 'rxjs';
 import { MostPopularVendors } from './mostPopularVendors';
+import { Globals } from 'src/app/app.component';
+
+let globals = new Globals()
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +16,15 @@ export class MetricsService {
   constructor(private http: HttpClient){}
 
   getMostPurchasedProductServiceUrl(): string {
-    return 'http://127.0.0.1:5000/metrics/most_purchased';
+    return globals.hosturl+'/metrics/most_purchased';
   }
 
   getMostLikedProductsServiceUrl(): string {
-    return 'http://127.0.0.1:5000/metrics/most_liked';
+    return globals.hosturl+'/metrics/most_liked';
   }
 
   getMostPopularVendorsServiceUrl(): string {
-    return 'http://127.0.0.1:5000/metrics/popular_vendors';
+    return globals.hosturl+'/metrics/popular_vendors';
   }
 
   getMostPopularProducts() : Observable<MostPopularProducts[]> {
