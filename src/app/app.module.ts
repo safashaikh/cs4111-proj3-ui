@@ -18,6 +18,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomersComponent } from './components/customers/customers.component';
 import { VendorsComponent } from './components/vendors/vendors.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { VendorsComponent } from './components/vendors/vendors.component';
     SearchBarComponent,
     CustomerComponent,
     CustomersComponent,
-    VendorsComponent
+    VendorsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
