@@ -60,9 +60,6 @@ export class ProductsService {
   }
 
   getProductsByName(search: any) : Observable<Product[]> {
-    if(search === "") {
-      return this.getProducts()
-    }
     console.log(search)
     let theUrl: string = globals.hosturl+"/products?name="+search;
     console.log(this.http.get<Product[]>(theUrl));
