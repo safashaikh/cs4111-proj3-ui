@@ -11,6 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class CustomersComponent implements OnInit {
   usersInfo: Customer[] = [];
   userService: CustomerService;
+  search: string = ""
   constructor(userService: CustomerService) {
     this.userService = userService;
    }
@@ -19,6 +20,15 @@ export class CustomersComponent implements OnInit {
     console.log('Initialized');
     this.userService.getCustomers()
     .subscribe( data => this.usersInfo = data)
+  }
+
+  onSearch() : void {
+    this.userService.getCustomersByName(this.search)
+    .subscribe( data => this.usersInfo = data)
+  }
+
+  onSearchChange(event: any) : void {
+    this.search = event.target.value;
   }
 
 }

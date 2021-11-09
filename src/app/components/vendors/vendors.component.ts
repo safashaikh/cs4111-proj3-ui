@@ -12,6 +12,7 @@ export class VendorsComponent implements OnInit {
   vendors: Vendor[] = [];
   vendorService: VendorsService;
   pID: string;
+  search: string = ""
   
   constructor(vendorService: VendorsService, public router: Router, private route: ActivatedRoute) {
     this.vendorService = vendorService;
@@ -24,11 +25,19 @@ export class VendorsComponent implements OnInit {
     if (this.router.url == '/vendors'){
       this.vendorService.getVendors()
       .subscribe( data => this.vendors = data)
-    }else{
+    } else {
       this.pID = this.route.snapshot.params['pid']
       this.vendorService.getProductVendors(this.pID)
       .subscribe( data => this.vendors = data)
     }
   }
 
+  onSearch() : void {
+    this.vendorService.getVendorsByName(this.search)
+    .subscribe( data => this.vendors = data)
+  }
+
+  onSearchChange(event: any) : void {
+    this.search = event.target.value;
+  }
 }

@@ -11,24 +11,22 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserloginComponent } from './components/userlogin/userlogin.component';
 import { ProductsComponent } from './components/products/products.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomersComponent } from './components/customers/customers.component';
 import { VendorsComponent } from './components/vendors/vendors.component';
+import { MetricsComponent } from './components/metrics/metrics.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserloginComponent,
     ProductsComponent,
-    SearchBarComponent,
     CustomerComponent,
     CustomersComponent,
-    VendorsComponent
+    VendorsComponent,
+    MetricsComponent
   ],
   imports: [
     BrowserModule,

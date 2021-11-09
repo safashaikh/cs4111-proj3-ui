@@ -1,11 +1,17 @@
 <div class="px-0 bg-light">
     <div class="d-md-flex">
         <div id="topnavbar">
-            <div class="topnav mb-3">
-                <div class="d-flex px-1"> <a href="users" class="active">customers</a> <a href="products">products</a> <a href="vendors">vendors</a> </div>
-            </div>
-            <div class="d-flex align-items-center mb-3 px-md-3 px-2"> <span class="text-uppercase fs13 fw-bolder pe-3">search<span class="ps-1">by</span></span>
-                <form class="example d-flex align-items-center"> <input type="text" placeholder="Type in Company Name Or Mid id" name="search"> <button type="submit"><i class="fa fa-search">Search</i></button> </form>
+            <div class="d-flex align-items-center mb-3 px-md-3 px-2"> 
+                <span class="text-uppercase fs13 fw-bolder pe-3">
+                    search
+                    <span class="ps-1">by</span>
+                </span>
+                <form class="example d-flex align-items-center"> 
+                    <input type="text" (change)="onSearchChange($event)" placeholder="Type in Name" name="search"> 
+                    <button (click)="onSearch()">
+                        <i class="fa fa-search">Search</i>
+                    </button> 
+                </form>
             </div>
             <div class="table-responsive px-2">
                 <table class="table table-borderless">
@@ -22,7 +28,7 @@
                     <tbody>
                         <tr *ngFor="let u of usersInfo" >
                             <td><span class="bg-blight"><a routerLink="{{'/customers/'+u.cid}}" routerLinkActive="router-link-active">{{u.cid}}</a></span></td>
-                            <td><span class="bg-bdark">{{u.username}}</span></td>
+                            <td><span class="bg-bdark"><a routerLink="{{'/customers/'+u.cid}}" routerLinkActive="router-link-active">{{u.username}}</a></span></td>
                             <td><span class="bg-blight">{{u.password}}</span></td>
                             <td><span class="bg-bdark">{{u.name}}</span></td>
                             <td><span class="bg-bdark">{{u.email}}</span></td>

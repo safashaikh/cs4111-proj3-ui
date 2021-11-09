@@ -48,4 +48,14 @@ export class VendorsService {
     theUrl = this.getVendorsServiceUrl(id);
     return this.http.get<Vendor[]>(theUrl);
   }
+
+  getVendorsByName(search: any) : Observable<Vendor[]> {
+    if(search === "") {
+      return this.getVendors()
+    }
+    console.log(search)
+    let theUrl: string = "http://127.0.0.1:5000/vendors?name="+search;
+    console.log(this.http.get<Vendor[]>(theUrl));
+    return this.http.get<Vendor[]>(theUrl);
+  }
 }
