@@ -7,6 +7,8 @@ import { Router } from '@angular/router'
 import { Globals } from 'src/app/app.component';
 import { ItemOrder } from './itemorder';
 
+let globals = new Globals();
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +22,6 @@ export class OrdersService {
 
   getOrdersServiceUrl(id: string, num: Number = 10): string {
     let result: string;
-    
     if (this.router.url === '/orders' || this.router.url === '/orders/:oid'){
       if (id!=''){
         result = this.hosturl+'/orders/'+id;
