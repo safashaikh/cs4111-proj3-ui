@@ -5,26 +5,31 @@ import { HttpHeaders } from '@angular/common/http';
 import { Order } from './order'
 import { Router } from '@angular/router'
 import { Globals } from 'src/app/app.component';
+import { ItemOrder } from './itemorder';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
-
-  constructor(private http: HttpClient, private router: Router) { }
+  
+  hosturl: string;
+  constructor(private http: HttpClient, private router: Router) { 
+    let globals = new Globals();
+    this.hosturl = globals.hosturl;
+  }
 
   getOrdersServiceUrl(id: string, num: Number = 10): string {
     let result: string;
-    let globals = new Globals();
+    
     if (this.router.url === '/orders' || this.router.url === '/orders/:oid'){
       if (id!=''){
-        result = globals.hosturl+'/orders/'+id;
+        result = this.hosturl+'/orders/'+id;
       }else{
-        result = globals.hosturl+'/orders';
+        result = this.hosturl+'/orders';
       }
       return result;
     } else {
-      return globals.hosturl+'/users/'+id+'/orders?count='+num;
+      return this.hosturl+'/users/'+id+'/orders?count='+num;
     }
   }
 
@@ -53,8 +58,15 @@ export class OrdersService {
       return this.getCustomerOrders(cid, num);
     }
     console.log(search)
-    let theUrl: string = "http://127.0.0.1:5000/orders?oid="+search;
+    let theUrl: string = this.hosturl+"/orders?oid="+search;
     console.log(this.http.get<Order[]>(theUrl));
     return this.http.get<Order[]>(theUrl);
   }
+
+  getItemOrdersByOid(oid: string): Observable<ItemOrder[]> {
+    let theUrl: string = this.hosturl+"/orders/"+oid+"/itemorders";
+    return this.http.get<ItemOrder[]>(theUrl);
+  }
+
+  //getCardByOid(oid: string): 
 }

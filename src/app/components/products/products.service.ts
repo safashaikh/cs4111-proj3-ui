@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { Product } from './product';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
+import { Globals } from 'src/app/app.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
   allProducts: Product[] = [];
+  hosturl: string;
   constructor(private http: HttpClient, private router: Router) {
+    let globals = new Globals();
+    this.hosturl = globals.hosturl;
   }
 
   getProductServiceUrl(id: string): string {
@@ -17,13 +21,13 @@ export class ProductsService {
 
     if (this.router.url === '/products' || this.router.url === '/products/:pid') {
       if (id=='') {
-        result = 'http://127.0.0.1:5000/products'
+        result = this.hosturl+'/products'
       } else{
-        result = 'http://127.0.0.1:5000/products/'+id;
+        result = this.hosturl+'/products/'+id;
       }
       return result;
     } else {
-      return 'http://127.0.0.1:5000/vendors/'+id+'/products';
+      return this.hosturl+'/vendors/'+id+'/products';
     }
   }
 
@@ -57,7 +61,7 @@ export class ProductsService {
       return this.getProducts()
     }
     console.log(search)
-    let theUrl: string = "http://127.0.0.1:5000/products?name="+search;
+    let theUrl: string = this.hosturl+"/products?name="+search;
     console.log(this.http.get<Product[]>(theUrl));
     return this.http.get<Product[]>(theUrl);
   }
