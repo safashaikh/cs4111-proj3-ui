@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Customer } from './customer';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { Globals } from 'src/app/app.component';
+
+let globals = new Globals();
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,17 +27,11 @@ export class CustomerService {
   getCustomerServiceUrl(id: string): string {
     const theUrl = window.location.href;
     let result: string;
-
-    if ((theUrl.includes('127.0.0.1')) || (theUrl.includes('localhost')))
-    {
-      result = 'http://127.0.0.1:5000/users/'+id;
-    } else {
-      result = 'http://useraddressflask-env.eba-2thfz2gi.us-east-1.elasticbeanstalk.com/users/'+id;
-    }
+    
     if (id!=''){
-      result = 'http://127.0.0.1:5000/users/'+id;
+      result = globals.hosturl+'/users/'+id;
     }else{
-      result = 'http://127.0.0.1:5000/users';
+      result = globals.hosturl+'/users';
     }
     return result;
   }
@@ -65,7 +62,7 @@ export class CustomerService {
       return this.getCustomers()
     }
     console.log(search)
-    let theUrl: string = "http://127.0.0.1:5000/users?name="+search;
+    let theUrl: string = globals.hosturl+"/users?name="+search;
     console.log(this.http.get<Customer[]>(theUrl));
     return this.http.get<Customer[]>(theUrl);
   }

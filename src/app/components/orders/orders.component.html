@@ -24,6 +24,9 @@
                             <th scope="col">Discount</th>
                             <th scope="col">Subtotal</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Shipper</th>
+                            <th scope="col">Tracking</th>
+                            <th scope="col">Address</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +38,9 @@
                             <td><span class="bg-bdark">{{o.discount}}</span></td>
                             <td><span class="bg-bdark">{{o.subtotal}}</span></td>
                             <td><span class="bg-bdark">{{o.total}}</span></td>
+                            <td><span class="bg-bdark">{{o.shipper}}</span></td>
+                            <td><span class="bg-bdark">{{o.tn}}</span></td>
+                            <td><span class="bg-bdark">{{o.street_address + ", " + o.city + ", " + o.state + " " + o.zip}}</span></td>
                         </tr>
                         
                     </tbody>
