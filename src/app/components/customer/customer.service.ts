@@ -58,9 +58,6 @@ export class CustomerService {
   }
 
   getCustomersByName(search: any) : Observable<Customer[]> {
-    if(search === "") {
-      return this.getCustomers()
-    }
     console.log(search)
     let theUrl: string = globals.hosturl+"/users?name="+search;
     console.log(this.http.get<Customer[]>(theUrl));

@@ -56,7 +56,6 @@ export class OrdersService {
 
   getOrdersByOid(search: any, cid: string, num: Number) : Observable<Order[]> {
     let theUrl: string;
-    console.log(search)
     if (this.router.url === '/orders' || this.router.url === '/orders/:oid'){
       theUrl = globals.hosturl+'/orders?oid='+search;
     } else {
@@ -70,6 +69,4 @@ export class OrdersService {
     let theUrl: string = this.hosturl+"/orders/"+oid+"/itemorders";
     return this.http.get<ItemOrder[]>(theUrl);
   }
-
-  //getCardByOid(oid: string): 
 }

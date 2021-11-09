@@ -53,9 +53,6 @@ export class VendorsService {
   }
 
   getVendorsByName(search: any) : Observable<Vendor[]> {
-    if(search === "") {
-      return this.getVendors()
-    }
     console.log(search)
     let theUrl: string = globals.hosturl+"/vendors?name="+search;
     console.log(this.http.get<Vendor[]>(theUrl));
