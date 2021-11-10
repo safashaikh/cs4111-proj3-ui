@@ -29,7 +29,7 @@ export class OrdersService {
   getOrder(id: string): Observable<Order[]> {
     let theUrl: string;
 
-    theUrl = this.hosturl+'/orders?oid='+id;
+    theUrl = this.hosturl+'/orders/'+id;
     return this.http.get<Order[]>(theUrl);
   }
 
