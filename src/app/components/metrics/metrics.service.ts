@@ -27,21 +27,21 @@ export class MetricsService {
     return globals.hosturl+'/metrics/popular_vendors';
   }
 
-  getMostPopularProducts() : Observable<MostPopularProducts[]> {
+  getMostPopularProducts(num: Number) : Observable<MostPopularProducts[]> {
     let theUrl: string;
-    theUrl = this.getMostPurchasedProductServiceUrl();
+    theUrl = this.getMostPurchasedProductServiceUrl()+"?count="+num;
     return this.http.get<MostPopularProducts[]>(theUrl);
   }
 
-  getMostLikedProducts() : Observable<MostPopularProducts[]> {
+  getMostLikedProducts(num: Number) : Observable<MostPopularProducts[]> {
     let theUrl: string;
-    theUrl = this.getMostLikedProductsServiceUrl();
+    theUrl = this.getMostLikedProductsServiceUrl()+"?count="+num;
     return this.http.get<MostPopularProducts[]>(theUrl);
   }
 
-  getMostPopularVendors() : Observable<MostPopularVendors[]> {
+  getMostPopularVendors(num: Number) : Observable<MostPopularVendors[]> {
     let theUrl: string;
-    theUrl = this.getMostPopularVendorsServiceUrl();
+    theUrl = this.getMostPopularVendorsServiceUrl()+"?count="+num;
     return this.http.get<MostPopularVendors[]>(theUrl);
   }
 }

@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let o of orders" >
-                            <td><span class="bg-blight">{{o.oid}}</span></td>
+                            <td><span class="bg-blight"><a routerLink="{{'/orders/'+o.oid}}" routerLinkActive="router-link-active">{{o.oid}}</a></span></td>
                             <td><span class="bg-bdark">{{o.odate}}</span></td>
                             <td><span class="bg-bdark">{{o.card}}</span></td>
                             <td><span class="bg-bdark">{{o.tax}}</span></td>

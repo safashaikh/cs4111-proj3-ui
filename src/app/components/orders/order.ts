@@ -3,7 +3,7 @@ export class Order {
   odate: string;
   discount: string;
   tax: string;
-  customer: Number;
+  customer: string;
   card: Number;
   address: Number;
   subtotal: string;
@@ -20,7 +20,7 @@ export class Order {
               odate: string,
               discount: string,
               tax: string,
-              customer: Number,
+              customer: string,
               card: Number,
               address: Number,
               subtotal: string,

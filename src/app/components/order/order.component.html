@@ -1,60 +1,148 @@
-<div class="card mt-50 mb-50">
-    <div class="col d-flex"><span class="text-muted" id="orderno">order #546924</span></div>
+<!--<div class="card mt-50 mb-50">
+    <div class="col d-flex"><span class="text-muted" id="orderno">order #{{this.oID}}</span></div>
     <div class="gap">
         <div class="col-2 d-flex mx-auto"> </div>
     </div>
-    <div class="title mx-auto"> Thank you for your order! </div>
+    <div class="title mx-auto"> Thank you for your order, {{this.currOrder.customer}}! </div>
     <div class="main"> <span id="sub-title">
             <p><b>Payment Summary</b></p>
         </span>
-        <div class="row row-main">
+        <div *ngFor="let i of itemOrders" class="row row-main">
             <div class="col-3"> <img class="img-fluid" src="https://i.imgur.com/qSnCFIS.png"> </div>
             <div class="col-6">
                 <div class="row d-flex">
-                    <p><b>iPhone XR</b></p>
+                    <p><b>{{i.product_name}}</b></p>
                 </div>
                 <div class="row d-flex">
-                    <p class="text-muted">128GB White</p>
+                    <p class="text-muted">Sold by {{i.vendor_name}}</p>
+                </div>
+                <div class="row d-flex">
+                    <p class="text-muted"><b>{{i.price}}</b></p>
+                </div>
+                <div class="row d-flex">
+                    <p class="text-muted">x{{i.quantity}}</p>
                 </div>
             </div>
             <div class="col-3 d-flex justify-content-end">
-                <p><b>$599</b></p>
+                <p><b>{{i.price}}</b></p>
             </div>
         </div>
-        <div class="row row-main">
-            <div class="col-3"> <img class="img-fluid" src="https://i.imgur.com/WuJwAJD.jpg"> </div>
-            <div class="col-6">
-                <div class="row d-flex">
-                    <p><b>Airpods</b></p>
-                </div>
-                <div class="row d-flex">
-                    <p class="text-muted">With charging case</p>
-                </div>
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-                <p><b>$199</b></p>
-            </div>
-        </div>
-        <div class="row row-main">
-            <div class="col-3 "> <img class="img-fluid" src="https://i.imgur.com/hOsIes2.png"> </div>
-            <div class="col-6">
-                <div class="row d-flex">
-                    <p><b>Belkin Boost Up</b></p>
-                </div>
-                <div class="row d-flex">
-                    <p class="text-muted">Wireless charging pad</p>
-                </div>
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-                <p><b>$49.95</b></p>
-            </div>
-        </div>
+        
         <hr>
         <div class="total">
             <div class="row">
                 <div class="col"> <b> Total:</b> </div>
-                <div class="col d-flex justify-content-end"> <b>$847.95</b> </div>
-            </div> <button class="btn d-flex mx-auto"> Track your order </button>
+                <div class="col d-flex justify-content-end"> <b>{{this.currOrder.total}}</b> </div>
+            </div> 
+        </div>
+    </div>
+</div>
+!-->
+
+<div class="container-fluid my-5 d-flex justify-content-center">
+    <div class="card card-1">
+        <div class="card-header bg-white">
+            <div class="media flex-sm-row flex-column-reverse justify-content-between ">
+                <div class="col my-auto">
+                    <h2 class="mb-0">Thanks for your Order, <span class="change-color">{{this.currOrder.customer}}</span>!</h2>
+                </div>
+                <div class="col-auto text-center my-auto pl-0 pt-sm-4"> <img class="img-fluid my-auto align-items-center mb-0 pt-3" src="https://www.online-tech-tips.com/wp-content/uploads/2019/12/electronic-gadgets.jpeg" width="115" height="115">
+                    <p class="mb-4 pt-0 Glasses"><b>Electronics Hub</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-between mb-3">
+                <div class="col-auto">
+                    <h6 class="color-1 mb-0 change-color">Receipt</h6>
+                </div>
+                <div class="col-auto "> <small>Order # : {{this.oID}}</small> </div>
+            </div>
+            <div *ngFor="let i of itemOrders" class="row">
+                <div class="col">
+                    <div class="card card-2">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="sq align-self-center "> <img class="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" src="https://www.electronicsforu.com/wp-contents/uploads/2014/02/electronics-projects.jpg" width="135" height="135" /> </div>
+                                <div class="media-body my-auto text-right">
+                                    <div class="row my-auto flex-column flex-md-row">
+                                        <div class="col my-auto">
+                                            <h3 class="mb-0"> {{i.product_name}}</h3>
+                                        </div>
+                                        <div class="col my-auto"> <h5>Sold by {{i.vendor_name}}</h5></div>
+                                        <div class="col my-auto"> <h4>Qty : {{i.quantity}}</h4></div>
+                                        <div class="col my-auto">
+                                            <h3 class="mb-0"><b>{{i.price}}</b></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p class="mb-1 text-dark"><b>Order Details</b></p>
+                        </div>
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"><b>Subotal</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1"><b>{{this.currOrder.subtotal}}</b></p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"> <b>Discount</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">{{this.currOrder.discount}}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"><b>Tax</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">{{this.currOrder.tax}}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"><b>Delivery Charges</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">Free</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row invoice ">
+                <div class="col">
+                    <p class="mb-1"> Shipper: {{this.currOrder.shipper}}</p>
+                    <p class="mb-1">Tracking Number: {{this.currOrder.tn}}</p>
+                    <p class="mb-1">Invoice Date: {{this.currOrder.odate}}</p>
+                    <p class="mb-1">Address: {{this.currOrder.street_address}}, {{this.currOrder.city}}, {{this.currOrder.state}} {{this.currOrder.zip}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="jumbotron-fluid">
+                <div class="row justify-content-between ">
+                    <div class="col-sm-auto col-auto my-auto"><img class="img-fluid my-auto align-self-center " src="https://www.online-tech-tips.com/wp-content/uploads/2019/12/electronic-gadgets.jpeg" width="115" height="115"></div>
+                    <div class="col-auto my-auto ">
+                        <h2 class="mb-0 font-weight-bold">TOTAL PAID</h2>
+                    </div>
+                    <div class="col-auto my-auto ml-auto">
+                        <h1 class="display-3 ">{{this.currOrder.total}}</h1>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
 </div>

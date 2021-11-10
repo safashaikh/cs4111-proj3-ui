@@ -15,18 +15,18 @@ export class MetricsComponent implements OnInit {
   testInp: string;
   showProducts = true;
   metricsService: MetricsService;
-
+  num: Number = 10;
   constructor(metricsService: MetricsService) {
     this.testInp = "";
     this.metricsService = metricsService;
   }
 
   ngOnInit(): void {
-    this.metricsService.getMostPopularProducts()
+    this.metricsService.getMostPopularProducts(this.num)
     .subscribe( data => this.mostPurchasedProducts = data)
-    this.metricsService.getMostPopularVendors()
+    this.metricsService.getMostPopularVendors(this.num)
     .subscribe( data => this.mostPopularVendors = data)
-    this.metricsService.getMostLikedProducts()
+    this.metricsService.getMostLikedProducts(this.num)
     .subscribe( data => this.mostLikedProducts = data)
   }
 
@@ -37,6 +37,16 @@ export class MetricsComponent implements OnInit {
 
   toggleProducts(): void {
     this.showProducts = !this.showProducts;
+  }
+
+  onNumChange(event: any) : void {
+    this.num = event.target.value
+    this.metricsService.getMostPopularProducts(this.num)
+      .subscribe( data => this.mostPurchasedProducts = data)
+    this.metricsService.getMostPopularVendors(this.num)
+      .subscribe( data => this.mostPopularVendors = data)
+    this.metricsService.getMostLikedProducts(this.num)
+      .subscribe( data => this.mostLikedProducts = data)
   }
 
 }

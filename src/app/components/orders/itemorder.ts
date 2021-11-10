@@ -5,6 +5,7 @@ export class ItemOrder {
     vendor: Number;
     product_name: string;
     vendor_name: string;
+    price: string;
   
   
     constructor(oid: Number,
@@ -13,6 +14,7 @@ export class ItemOrder {
                 vendor: Number,
                 product_name: string,
                 vendor_name: string,
+                price: string
                 ) {
         this.oid = oid
         this.product = product
@@ -20,5 +22,6 @@ export class ItemOrder {
         this.vendor = vendor
         this.product_name = product_name
         this.vendor_name = vendor_name
+        this.price = price
     }
   }

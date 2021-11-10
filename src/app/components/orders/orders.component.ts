@@ -21,7 +21,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url == '/orders'){
-      this.ordersService.getOrders()
+      this.ordersService.getOrders(this.num)
       .subscribe( data => this.orders = data)
     } else {
       this.cid = this.route.snapshot.params['cID']
@@ -41,8 +41,13 @@ export class OrdersComponent implements OnInit {
 
   onNumChange(event: any) : void {
     this.num = event.target.value;
-    this.ordersService.getCustomerOrders(this.cid, this.num)
-      .subscribe( data => this.orders = data)
+    if (this.router.url === '/customers/:cid'){
+      this.ordersService.getCustomerOrders(this.cid, this.num)
+        .subscribe( data => this.orders = data)
+    }else{
+      this.ordersService.getOrders(this.num)
+        .subscribe( data => this.orders = data)
+    }
   }
 
 }

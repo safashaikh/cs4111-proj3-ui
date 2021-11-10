@@ -20,37 +20,23 @@ export class OrdersService {
     this.hosturl = globals.hosturl;
   }
 
-  getOrdersServiceUrl(id: string, num: Number = 10): string {
-    let result: string;
-    if (this.router.url === '/orders' || this.router.url === '/orders/:oid'){
-      if (id!=''){
-        result = this.hosturl+'/orders/'+id;
-      }else{
-        result = this.hosturl+'/orders';
-      }
-      return result;
-    } else {
-      return this.hosturl+'/users/'+id+'/orders?count='+num;
-    }
-  }
-
   getCustomerOrders(id: string, num: Number) : Observable<Order[]> {
     let theUrl: string;
-    theUrl = this.getOrdersServiceUrl(id, num);
+    theUrl = this.hosturl+'/users/'+id+'/orders?count='+num;
     return this.http.get<Order[]>(theUrl);
   }
 
   getOrder(id: string): Observable<Order[]> {
     let theUrl: string;
 
-    theUrl = this.getOrdersServiceUrl(id);
+    theUrl = this.hosturl+'/orders?oid='+id;
     return this.http.get<Order[]>(theUrl);
   }
 
-  getOrders() : Observable<Order[]> {
+  getOrders(num: Number) : Observable<Order[]> {
     let theUrl: string;
 
-    theUrl = this.getOrdersServiceUrl('');
+    theUrl = this.hosturl+'/orders?count='+num;
     return this.http.get<Order[]>(theUrl);
   }
 
